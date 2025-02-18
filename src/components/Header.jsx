@@ -1,4 +1,5 @@
-import Logo from '../assets/sawako.jpg'
+import Logo from '../assets/sawako.jpg';
+import {Link} from 'react-router-dom';
 
 export default function Header() {
 
@@ -7,17 +8,14 @@ export default function Header() {
             <div className='flex items-center gap-4'>
                 <img src={Logo} className="size-11 rounded-full"
                 />
-                <h1 className='font-semibold'> Portfolio </h1>
+                <h1 className='font-semibold text-xl'> Portfolio </h1>
             </div>
-            <ul className="flex gap-6 font-semibold">
+            <ul className="flex gap-6 font-semibold text-xl pr-4">
                 <li>
-                    Home
+                    <Link to='/'>Home</Link>
                 </li>
                 <li>
-                    About
-                </li>
-                <li>
-                    Contact
+                    <Link to='/about'>About</Link>
                 </li>
             </ul>
 
