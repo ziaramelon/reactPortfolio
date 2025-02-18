@@ -1,5 +1,4 @@
 import MyImg from "../assets/sawako.jpg";
-import Button from "../components/Button";
 
 export default function Hero() {
   return (
