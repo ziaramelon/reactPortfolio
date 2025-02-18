@@ -15,11 +15,8 @@ export default function Hero() {
             I am <span className="text-green-800">Rai Beligolo</span>{" "}
           </p>
           <p className="text-xl text-green-950">
-            Layout Designer | Graphic Artist
+            Layout Artist | Graphic Designer
           </p>
-        </div>
-        <div className="my-6">
-          <Button />
         </div>
       </div>
     </div>

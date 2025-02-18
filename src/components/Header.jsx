@@ -8,17 +8,14 @@ export default function Header() {
             <div className='flex items-center gap-4'>
                 <img src={Logo} className="size-11 rounded-full"
                 />
-                <h1 className='font-semibold'> Portfolio </h1>
+                <h1 className='font-semibold text-xl'> Portfolio </h1>
             </div>
-            <ul className="flex gap-6 font-semibold">
+            <ul className="flex gap-6 font-semibold text-xl pr-4">
                 <li>
                     <Link to='/'>Home</Link>
                 </li>
                 <li>
                     <Link to='/about'>About</Link>
-                </li>
-                <li>
-                    <Link to='/contact'>Contact</Link>
                 </li>
             </ul>
 
