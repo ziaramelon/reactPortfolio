@@ -7,6 +7,8 @@ import cert4 from "../assets/certificates/cert4.png";
 import cert5 from "../assets/certificates/cert5.png";
 import cert6 from "../assets/certificates/cert6.png";
 import cert7 from "../assets/certificates/cert7.png";
+import cert8 from "../assets/certificates/cert8.png";
+import cert9 from "../assets/certificates/cert9.png";
 
 export const Certificates = () => {
   // State to track which certificate is being viewed in the modal
@@ -42,6 +44,8 @@ export const Certificates = () => {
     cert5,
     cert6,
     cert7,
+    cert8,
+    cert9,
   ];
 
   // Modal for viewing certificate in larger size
