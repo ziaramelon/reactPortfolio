@@ -82,7 +82,7 @@ export const Skills = () => {
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
           >
-            My Skills
+            Skills
           </motion.h2>
           <motion.p
             className="text-zinc-600 max-w-xl mx-auto"
@@ -125,7 +125,7 @@ export const Skills = () => {
                     viewport={{ once: true }}
                     whileHover={{ y: -5, scale: 1.03 }}
                   >
-                    <div className="w-16 h-16 flex items-center justify-center mb-4 bg-emerald-100 rounded-full text-emerald-600 font-bold text-xl">
+                    <div className="w-16 h-16 flex items-center justify-center mb-4 rounded-full text-emerald-600 font-bold text-xl">
                       <img src={skill.logo} alt="" />
                       
                     </div>

@@ -1,59 +1,206 @@
-import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
-import poke from "../assets/poke.png";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Github, X } from "lucide-react";
+import app from "../assets/appThumb.png";
+import appView from "../assets/appView.png";
+import eco from "../assets/ecovariety.png";
+import ccs from "../assets/ccs.png";
+import hatch from "../assets/hatch.png";
+import pokemon from "../assets/pokemon.png";
+import portfo from "../assets/portfo.png";
+import table from "../assets/table.png";
 import todo from "../assets/todo.png";
-import ecom from "../assets/ecom.jpg";
-import crimson from "../assets/crimson.jpg";
+import pokeThumb from "../assets/pokeThumb.png";
+import hatchThumb from "../assets/hatchThumb.png";
+import portThumb from "../assets/portThumb.png";
+import ecoThumb from "../assets/ecoThumb.png";
+import tableThumb from "../assets/tableThumb.png";
 
+
+// ImageModal Component
+const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <motion.div
+          className="relative max-h-screen bg-white rounded-lg overflow-auto"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          transition={{ type: "spring", damping: 25 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 bg-white rounded-full p-1 shadow-md hover:bg-gray-100 transition-colors z-10"
+          >
+            <X size={24} className="text-zinc-800" />
+          </button>
+
+          <div className="w-full">
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="w-full object-contain max-h-max"
+            />
+          </div>
+
+          <div className="p-4 bg-white">
+            <h3 className="text-xl font-bold text-zinc-800">{imageAlt}</h3>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+// ProjectCard Component
+const ProjectCard = ({ project, onImageClick }) => {
+  return (
+    <motion.div
+      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
+    >
+      <div
+        className="relative overflow-hidden cursor-pointer"
+        onClick={() => onImageClick(project)}
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-48 object-cover transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-zinc-800 mb-2">
+          {project.title}
+        </h3>
+        <p className="text-sm text-emerald-600 font-medium mb-4">
+          {project.role}
+        </p>
+        <div className="flex space-x-2">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 text-xs font-medium bg-zinc-100 text-zinc-800 rounded-full flex items-center gap-1 hover:bg-zinc-200 transition-colors"
+            >
+              <Github size={12} /> GitHub
+            </a>
+          )}
+          {project.liveLink && (
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 text-xs font-medium bg-emerald-50 text-emerald-600 rounded-full flex items-center gap-1 hover:bg-emerald-100 transition-colors"
+            >
+              <ExternalLink size={12} /> Live view
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// Projects Component
 export const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = (project) => {
+    setSelectedProject(project);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  // Sample projects data
   const projects = [
     {
       id: 1,
-      title: "IT145: Pokemon Battle",
-      category: ["ui", "ux"],
-      image: poke,
-      tags: ["ReactJS", "TailwindCSS"],
-      link: "https://github.com/ziaramelon/minipokedex.git",
+      title: "Mini Pokedex",
+      role: "Frontend Developer / UI Designer",
+      image: pokemon,
+      thumb: pokeThumb,
+      github: "https://github.com/ziaramelon/minipokedex.git",
+      liveLink: null,
     },
     {
       id: 2,
-      title: "IT145: Todolist",
+      title: "Reactjs Todolist",
+      role: "Frontend Developer / UI Designer",
       image: todo,
-      description:
-        "Comprehensive user research and testing for a wellness application targeting busy professionals.",
-      tags: ["ReactJS", "TailwindCSS"],
-      link: "https://reacttodolistproj.netlify.app/",
+      thumb: todo,
+      github: "https://github.com/ziaramelon/myReactTodolist.git",
+      liveLink: "https://reacttodolistproj.netlify.app/",
     },
     {
       id: 3,
-      title: "E-commerce Website Redesign",
-      image: todo,
-      tags: ["ReactJS", "TailwindCSS"],
-      link: "https://reacttodolistproj.netlify.app/",
+      title: "Hatchify",
+      role: "Frontend Developer / UI Designer",
+      image: hatch,
+      thumb: hatchThumb,
+      github: "https://github.com/ziaramelon/Hatchify.git",
+      liveLink: null,
     },
     {
       id: 4,
-      title: "",
-      category: ["visual"],
-      image: "/api/placeholder/600/400",
-      tags: ["", "", ""],
-      link: "#project-link",
+      title: "CCS Advising System",
+      role: "System Analyst & Project Manager",
+      image: ccs,
+      thumb: ccs,
+      github: "https://github.com/ziaramelon/ccsadvisingSE.git",
+      liveLink: null,
     },
     {
       id: 5,
-      title: "",
-      category: ["ui", "ux"],
-      image: "/api/placeholder/600/400",
-      tags: ["", "", ""],
-      link: "#project-link",
+      title: "Ecovariety",
+      role: "UI/UX Designer",
+      image: eco,
+      thumb: ecoThumb,
+      github: "https://github.com/larenzzx/Ecovariety.git",
+      liveLink: null,
     },
     {
       id: 6,
-      title: "",
-      category: ["ui", "visual"],
-      image: "/api/placeholder/600/400",
-      tags: ["", "", ""],
-      link: "#project-link",
+      title: "Machine Learning",
+      role: "UI/UX Design",
+      image: table,
+      thumb: tableThumb,
+      github: "#",
+      liveLink: null,
+    },
+    {
+      id: 7,
+      title: "CrimsonQuest",
+      role: "UI/UX Design",
+      image: app,
+      thumb: appView,
+      github: "https://github.com/larenzzx/CrimsonQuest.git",
+      liveLink: null,
+    },
+    {
+      id: 8,
+      title: "Portfolio Website",
+      role: "Individual Project",
+      image: portfo,
+      thumb: portThumb,
+      github: "#",
+      liveLink: null,
     },
   ];
 
@@ -78,7 +225,7 @@ export const Projects = () => {
   };
 
   return (
-    <div id="projects" className="py-24 bg-white">
+    <div id="projects" className="pt-24 pb-12 bg-zinc-50">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -91,10 +238,6 @@ export const Projects = () => {
             My Projects
           </h2>
           <div className="h-1 w-20 bg-emerald-500 mx-auto mb-6"></div>
-          <p className="text-zinc-600 max-w-lg mx-auto">
-            A collection of my finest work, showcasing my expertise in UI/UX
-            design and visual creativity.
-          </p>
         </motion.div>
 
         {/* Projects Grid */}
@@ -106,53 +249,20 @@ export const Projects = () => {
           viewport={{ once: true }}
         >
           {projects.map((project) => (
-            <motion.div
-              key={project.id}
-              variants={cardVariants}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-            >
-              <div className="relative overflow-hidden group">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 w-full">
-                    <div className="flex justify-end space-x-2">
-                      <motion.a
-                        href={project.link}
-                        className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center text-emerald-600 hover:bg-white"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Github size={18} />
-                      </motion.a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-zinc-800 mb-2">
-                  {project.title}
-                </h3>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.tags.slice(0, 3).map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 text-xs font-medium bg-emerald-50 text-emerald-600 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <motion.div key={project.id} variants={cardVariants}>
+              <ProjectCard project={project} onImageClick={openModal} />
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={modalOpen}
+        onClose={closeModal}
+        imageSrc={selectedProject?.thumb}
+        imageAlt={selectedProject?.title}
+      />
     </div>
   );
 };

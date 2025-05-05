@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram } from "lucide-react";
 
 export const Contact = () => {
   // Animation variants
@@ -140,7 +140,7 @@ export const Contact = () => {
               <Github size={22} />
             </motion.a>
             <motion.a
-              href="#"
+              href="https://www.linkedin.com/in/raiza-beligolo-a357b1363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -148,12 +148,12 @@ export const Contact = () => {
               <Linkedin size={22} />
             </motion.a>
             <motion.a
-              href="#"
+              href="https://www.instagram.com/ziaramelon?igsh=bnk0Nm9kdjlyNWFr"
               className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Twitter size={22} />
+              <Instagram size={22} />
             </motion.a>
           </div>
         </motion.div>

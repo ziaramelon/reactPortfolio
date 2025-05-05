@@ -18,7 +18,7 @@ export const Experience = () => {
       id: 2,
       role: "Frontend Developer",
       company: "Capstone Project: Hatchify (Best in Capstone)",
-      period: "September 2024 - December 2024",
+      period: "Sep - Dec 2024",
       description:
         "Built user-friendly and mobile-responsive dashboards for real-time monitoring of egg incubation status and environmental data.  Focused on clarity and usability by applying frontend practices and ensuring smooth interaction in mobile devices. Integrated clean, intuitive charts and UI components to display temperature, humidity, and notifications effectively.",
     },
@@ -34,7 +34,7 @@ export const Experience = () => {
       id: 4,
       role: "UI Designer",
       company: "E-commerce Website",
-      period: "January 2024 - April 2024",
+      period: "Jan - April 2024",
       description:
         "Designed a calming and green-themed UI that reflects Ecovariety’s identity as a plant sanctuary store. Ensured smooth performance and accessibility across web and mobile devices, with interactive features for plant lovers.",
     },
@@ -86,7 +86,7 @@ export const Experience = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-800 mb-4">
-            My Experience
+            Experience
           </h2>
           <div className="h-1 w-20 bg-emerald-500 mx-auto mb-6"></div>
         </motion.div>

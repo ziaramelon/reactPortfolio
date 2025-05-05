@@ -84,9 +84,9 @@ export const About = () => {
           >
             <h3 className="text-2xl font-bold mb-6 text-emerald-700"></h3>
 
-            <div className="space-y-6 text-zinc-700">
+            <div className="space-y-6 text-zinc-700 text-lg">
               <p>
-                Hi, my name is Raiza S. Beligolo. I am a passionate designer
+                Hi, my name is <span className="font-bold text-emerald-700">Raiza S. Beligolo</span>. I am a passionate designer
                 specializing in user interface or UI design for web and mobile
                 applications, with also experience in layout designing. While my
                 background is rooted in UI design, I am currently exploring UX
@@ -134,42 +134,6 @@ export const About = () => {
           >
             <img src={img} className="rounded-xl sm:max-w-sm" alt="" />
           </motion.div>
-          {/* <motion.div
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h3 className="text-2xl font-bold mb-6 text-emerald-700">
-              My Approach
-            </h3>
-
-            <motion.div
-              className="grid gap-6 md:grid-cols-2"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {approachItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="p-6 bg-emerald-50 rounded-lg border border-emerald-100 hover:shadow-md transition-shadow"
-                  variants={itemVariants}
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div className="mb-4 p-3 inline-block bg-emerald-100 rounded-full">
-                    {item.icon}
-                  </div>
-                  <h4 className="text-lg font-semibold mb-2 text-zinc-800">
-                    {item.title}
-                  </h4>
-                  <p className="text-zinc-600 text-sm">{item.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div> */}
         </div>
       </div>
     </section>
